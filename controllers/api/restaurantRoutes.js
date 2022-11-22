@@ -1,16 +1,15 @@
 const router = require('express').Router();
-const { Review, User } = require('../../models');
+const { Restaurant, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newReview = await Review.create({
+    const newRestaurant = await Restaurant.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newReview);
-    console.log('works');
+    res.status(200).json(newRestaurant);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -18,19 +17,19 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const reviewData = await Review.destroy({
+    const restaurantData = await Restaurant.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
 
-    if (!reviewData) {
-      res.status(404).json({ message: 'No Review found with this id!' });
+    if (!restaurantData) {
+      res.status(404).json({ message: 'No Restaurant found with this id!' });
       return;
     }
 
-    res.status(200).json(reviewData);
+    res.status(200).json(restaurantData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -38,8 +37,8 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-      // Get all reviews and JOIN with user data
-      const reviewData = await Review.findAll({
+      // Get all restaurants and JOIN with user data
+      const restaurantData = await Restaurant.findAll({
         include: [
           {
             model: User,
@@ -47,13 +46,13 @@ router.get('/', async (req, res) => {
           },
         ],
       });
-      console.log('works');
+  
       // Serialize data so the template can read it
-      const reviews = reviewData.map((review) => review.get({ plain: true }));
+      const restaurants = restaurantData.map((restaurant) => restaurant.get({ plain: true }));
   
       // Pass serialized data and session flag into template
       res.render('homepage', { 
-        reviews, 
+        restaurants, 
         logged_in: req.session.logged_in 
       });
     } catch (err) {
@@ -61,9 +60,9 @@ router.get('/', async (req, res) => {
     }
   });
   
-  router.get('/review/:id', async (req, res) => {
+  router.get('/restaurant/:id', async (req, res) => {
     try {
-      const reviewData = await Review.findByPk(req.params.id, {
+      const restaurantData = await Restaurant.findByPk(req.params.id, {
         include: [
           {
             model: User,
@@ -71,11 +70,11 @@ router.get('/', async (req, res) => {
           },
         ],
       });
-      console.log('works');
-      const review = reviewData.get({ plain: true });
   
-      res.render('review', {
-        ...review,
+      const restaurant = restaurantData.get({ plain: true });
+  
+      res.render('restaurant', {
+        ...restaurant,
         logged_in: req.session.logged_in
       });
     } catch (err) {
