@@ -15,32 +15,21 @@
     <label for='restaurantFilter'>Restaurant</label>
     <select id='restaurantFilter' class='form-control'>
       <option>Choose restaurant</option>
-      {{#each shoes}}
-      <option value="{{this}}">{{this.restaurant}}</option>
+      {{#each restaurant as |restaurant|}}
+      <option value="{{restaurant}}">{{restaurant.name}}</option>
       {{/each}}
     </select>
   </div>
   
   <div class='form-field'>
-    <label for='sizeFilter'>Size</label>
-    <select id='sizeFilter' class='form-control'>
-      <option>Choose size</option>
-      {{#each shoes}}
-      <option value="{{this}}">{{this.size}}</option>
+    <label for='reviewFilter'>Review</label>
+    <select id='reviewFilter' class='form-control'>
+      <option>Choose review</option>
+      {{#each review}}
+      <option value="{{this}}">{{this.name}}</option>
       {{/each}}
     </select>
   </div>
-    
-  <div class='form-field'>
-    <label for='colorFilter'>Color</label>
-    <select id='colorFilter' class='form-control'>
-      <option>Choose color</option>
-      {{#each shoes}}
-      <option value="{{this}}">{{this.color}}</option>
-      {{/each}}
-    </select>
-  </div>
-    
 </div>
 </div>
 
