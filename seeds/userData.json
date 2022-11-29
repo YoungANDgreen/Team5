@@ -17,6 +17,16 @@
   {
     "name": "Matt",
     "email": "matt@matt.com",
-    "password": "matt"
+    "password": "password12345"
+  },
+  {
+    "name": "Ryan",
+    "email": "ryan@ryan.com",
+    "password": "password12345"
+  },
+  {
+    "name": "Antonio",
+    "email": "antonio@antonio.com",
+    "password": "password12345"
   }
 ]
