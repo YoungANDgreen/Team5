@@ -2,5 +2,45 @@
   <div class="">
     <h2>Welcome, {{name}}!</h2>
   </div>
+  {{#each review as |review|}}
+  <div class="dish col-md-5">
+    <p>
+      {{review.id}}
+      {{review.name}}
+    </p>
+  </div>
+  {{/each}}
+<div class="dropdownMenus col-md-12">
+  <div class='form-field'>
+    <label for='restaurantFilter'>Restaurant</label>
+    <select id='restaurantFilter' class='form-control'>
+      <option>Choose restaurant</option>
+      {{#each shoes}}
+      <option value="{{this}}">{{this.restaurant}}</option>
+      {{/each}}
+    </select>
+  </div>
+  
+  <div class='form-field'>
+    <label for='sizeFilter'>Size</label>
+    <select id='sizeFilter' class='form-control'>
+      <option>Choose size</option>
+      {{#each shoes}}
+      <option value="{{this}}">{{this.size}}</option>
+      {{/each}}
+    </select>
+  </div>
+    
+  <div class='form-field'>
+    <label for='colorFilter'>Color</label>
+    <select id='colorFilter' class='form-control'>
+      <option>Choose color</option>
+      {{#each shoes}}
+      <option value="{{this}}">{{this.color}}</option>
+      {{/each}}
+    </select>
+  </div>
+    
+</div>
 </div>
 
