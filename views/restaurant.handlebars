@@ -1,0 +1,13 @@
+<div class=''>
+  <div class=''>
+    <h2>{{name}}</h2>
+  </div>
+  {{#each reviews as |review|}}
+    <div class='dish col-md-5'>
+      <p>
+        {{review.id}}
+        {{review.name}}
+      </p>
+    </div>
+  {{/each}}
+</div>
