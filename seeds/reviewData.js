@@ -2,7 +2,7 @@ const { Review } = require('../models');
 
 const reviewData = [
   {
-    name: 'Delicious food',
+    title: 'Delicious food',
     description:
       "This restaruant has a simple but delicious menu that leaves you inspired by the chefs' talents.",
     date_created: 'November 24, 2022',
@@ -13,7 +13,7 @@ const reviewData = [
     restaurant_id: 3,
   },
   {
-    name: 'Good food bad experience',
+    title: 'Good food bad experience',
     description:
       'Food was up to my standards, was left wanting more from the service.',
     date_created: 'November 22, 2022',
@@ -24,7 +24,7 @@ const reviewData = [
     restaurant_id: 2,
   },
   {
-    name: 'Good experience bad food',
+    title: 'Good experience bad food',
     description:
       'Location is nice and show is intertaining, food is not my favorite.',
     date_created: 'January 25, 2016',

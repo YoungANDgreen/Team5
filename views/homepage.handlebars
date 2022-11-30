@@ -1,6 +1,15 @@
 <div>
   <p>Homepage</p>
-  {{#each restaurants as |restaurant|}}
-    <p>look at this place: {{restaurant.address}}</p>
+  <p>Recent Reviews</p>
+  {{#each review as |review|}}
+    <p>{{review.title}}
+      created by
+      {{user.name}}
+      on
+      {{format_date created_at}}</p>
+    <p>{{review.description}}</p>
+    <p>Service: {{review.service}}</p>
+    <p>Taste: {{review.taste}}</p>
+    <p>Quality: {{review.quality}}</p>
   {{/each}}
 </div>

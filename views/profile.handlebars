@@ -1,9 +1,10 @@
 <div class=''>
   <div class=''>
     <h2>Welcome, {{name}}!</h2>
-    {{!-- {{#each restaurant as |restaurant|}} --}}
-    <p>This is the location's address {{address}}</p>
-    {{!-- {{/each}} --}}
+    {{#each restaurant as |restaurant|}}
+      <p>{{restaurant.local}}</p>
+      <p>Address: {{restaurant.address}}</p>
+    {{/each}}
   </div>
   {{#each review as |review|}}
     <div class='dish col-md-5'>
