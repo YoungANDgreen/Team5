@@ -1,35 +1,38 @@
-<div class="">
-  <div class="">
+<div class=''>
+  <div class=''>
     <h2>Welcome, {{name}}!</h2>
+    {{#each restaurants as |restaurant|}}
+      <p>{{restaurant.local}}</p>
+      <p>Address: {{restaurant.address}}</p>
+    {{/each}}
   </div>
-  {{#each review as |review|}}
-  <div class="dish col-md-5">
-    <p>
-      {{review.id}}
-      {{review.name}}
-    </p>
-  </div>
+  {{#each reviews as |review|}}
+    <div class='dish col-md-5'>
+      <p>
+        {{review.id}}
+        {{review.name}}
+      </p>
+    </div>
   {{/each}}
-<div class="dropdownMenus col-md-12">
-  <div class='form-field'>
-    <label for='restaurantFilter'>Restaurant</label>
-    <select id='restaurantFilter' class='form-control'>
-      <option>Choose restaurant</option>
-      {{#each restaurant as |restaurant|}}
-      <option value="{{restaurant}}">{{restaurant.name}}</option>
-      {{/each}}
-    </select>
-  </div>
-  
-  <div class='form-field'>
-    <label for='reviewFilter'>Review</label>
-    <select id='reviewFilter' class='form-control'>
-      <option>Choose review</option>
-      {{#each review}}
-      <option value="{{this}}">{{this.name}}</option>
-      {{/each}}
-    </select>
-  </div>
-</div>
-</div>
+  <div class='dropdownMenus col-md-12'>
+    <div class='form-field'>
+      <label for='restaurantFilter'>Restaurant</label>
+      <select id='restaurantFilter' class='form-control'>
+        <option>Choose restaurant</option>
+        {{#each restaurants as |restaurant|}}
+          <option value='{{restaurant.local}}'>{{restaurant.local}}</option>
+        {{/each}}
+      </select>
+    </div>
 
+    <div class='form-field'>
+      <label for='reviewFilter'>Review</label>
+      <select id='reviewFilter' class='form-control'>
+        <option>Choose review</option>
+        {{#each reviews as |review|}}
+          <option value='{{review.name}}'>{{review.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>

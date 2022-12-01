@@ -11,7 +11,7 @@ Restaurant.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    local: {
       type: DataTypes.STRING,
       allowNull: false,
     },

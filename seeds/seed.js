@@ -1,9 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Review, Restaurant } = require('../models');
+const { User } = require('../models');
 
 const userData = require('./userData.json');
-const reviewData = require('./reviewData.json');
-const restaurantData = require('./restaurantData.json');
+const seedReviews = require('./reviewData');
+const seedRestaurants = require('./restaurantData');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -11,17 +11,14 @@ const seedDatabase = async () => {
   await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
-  });  
-  for (const restaurant of restaurantData) {
-    await Restaurant.create({
-      ...restaurant,
-    })
-  };
-  for (const review of reviewData) {
-      await Review.create({
-        ...review,
-      });
-  }
+  });
+
+  // for (const restaurant of restaurantData) {
+  await seedRestaurants();
+  // }
+  // for (const review of reviewData) {
+  await seedReviews();
+  // }
 
   process.exit(0);
 };
