@@ -1,0 +1,66 @@
+<div class='col-md-6'>
+  <h3>Add a new review:</h3>
+
+  <form class='form new-review-form'>
+    <div class='form-group'>
+      <label for='review-title'>Review Title:</label>
+      <input
+        class='form-input'
+        type='text'
+        id='review-name'
+        name='review-name'
+      />
+    </div>
+    <div class='form-group'>
+      <label for='review-description'>Description:</label>
+      <input
+        class='form-input'
+        type='text'
+        id='review-description'
+        name='review-description'
+      />
+    </div>
+    <div class='form-group'>
+      <label for='review-service'>Service:</label>
+      <input
+        class='form-input'
+        type='text'
+        id='review-service'
+        name='review-service'
+      />
+    </div>
+    <div class='form-group'>
+      <label for='review-taste'>Taste:</label>
+      <input
+        class='form-input'
+        type='text'
+        id='review-taste'
+        name='review-taste'
+      />
+    </div>
+    <div class='form-group'>
+      <label for='review-quality'>Quality:</label>
+      <input
+        class='form-input'
+        type='text'
+        id='review-quality'
+        name='review-quality'
+      />
+    </div>
+    <div class='dropdownMenus col-md-12'>
+      <div class='form-field'>
+        <label for='restaurantFilter'>Which restaurant would you like to review?</label>
+        <select id='restaurantFilter' class='form-control'>
+          {{#each restaurants as |restaurant|}}
+            <option value='{{restaurant.id}}'>{{restaurant.local}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class='form-group'>
+      <button type='submit' class='btn btn-primary'>Create</button>
+    </div>
+  </form>
+</div>
+
+<script src='../public/js/newreview.js'></script>

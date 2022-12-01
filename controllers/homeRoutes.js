@@ -4,7 +4,25 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
+    // Get all reviews and JOIN with user data
+    const reviewData = await Review.findAll({
+      include: [
+        {
+          model: Restaurant,
+          attributes: ['local'],
+        },
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const reviews = reviewData.map((review) => review.get({ plain: true }));
+
     res.render('homepage', {
+      reviews,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -60,6 +78,33 @@ router.get('/restaurant', async (req, res) => {
 
     // Pass serialized data and session flag into template
     res.render('restaurant', {
+      restaurants,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/reviews', async (req, res) => {
+  try {
+    // Get all restaurants and JOIN with user data
+    const restaurantData = await Restaurant.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const restaurants = restaurantData.map((restaurant) =>
+      restaurant.get({ plain: true })
+    );
+
+    // Pass serialized data and session flag into template
+    res.render('review', {
       restaurants,
       logged_in: req.session.logged_in,
     });
