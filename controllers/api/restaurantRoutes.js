@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Restaurant, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/test', withAuth, async (req, res) => {
   try {
     const newRestaurant = await Restaurant.create({
       ...req.body,
@@ -35,32 +35,32 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-// router.get('/', async (req, res) => {
-//   try {
-//     // Get all restaurants and JOIN with user data
-//     const restaurantData = await Restaurant.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
+router.get('/', async (req, res) => {
+  try {
+    // Get all restaurants and JOIN with user data
+    const restaurantData = await Restaurant.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
 
-//     // Serialize data so the template can read it
-//     const restaurants = restaurantData.map((restaurant) =>
-//       restaurant.get({ plain: true })
-//     );
+    // Serialize data so the template can read it
+    const restaurants = restaurantData.map((restaurant) =>
+      restaurant.get({ plain: true })
+    );
 
-//     // Pass serialized data and session flag into template
-//     res.render('restaurant', {
-//       restaurants,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    // Pass serialized data and session flag into template
+    res.render('restaurant', {
+      restaurants,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get('/restaurant/:id', async (req, res) => {
   try {

@@ -4,24 +4,24 @@
 
     <form class='form new-project-form'>
       <div class='form-group'>
-        <label for='project-name'>Restaurant name:</label>
+        <label for='restaurant-name'>Restaurant name:</label>
         <input
           class='form-input'
           type='text'
-          id='project-name'
-          name='project-name'
+          id='restaurant-name'
+          name='restaurant-name'
         />
       </div>
       <div class='form-group'>
-        <label for='project-funding'>Address:</label>
+        <label for='restaurant-address'>Address:</label>
         <input
           class='form-input'
           type='text'
-          id='project-funding'
-          name='project-funding'
+          id='restaurant-address'
+          name='restaurant-address'
         />
       </div>
-      <div class='form-group'>
+      <div class='newRes'>
         <button type='submit' class='btn btn-primary'>Create</button>
       </div>
     </form>
@@ -33,7 +33,8 @@
     {{#each restaurants as |restaurant|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{restaurant.id}}">{{restaurant.local}}</a></h4>
+        <h4>{{restaurant.local}}</h4>
+        <p>{{restaurant.address}}</p>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{restaurant.id}}">DELETE</button>
