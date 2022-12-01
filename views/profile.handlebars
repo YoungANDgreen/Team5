@@ -1,12 +1,12 @@
 <div class=''>
   <div class=''>
     <h2>Welcome, {{name}}!</h2>
-    {{#each restaurant as |restaurant|}}
+    {{#each restaurants as |restaurant|}}
       <p>{{restaurant.local}}</p>
       <p>Address: {{restaurant.address}}</p>
     {{/each}}
   </div>
-  {{#each review as |review|}}
+  {{#each reviews as |review|}}
     <div class='dish col-md-5'>
       <p>
         {{review.id}}
@@ -20,7 +20,7 @@
       <select id='restaurantFilter' class='form-control'>
         <option>Choose restaurant</option>
         {{#each restaurants as |restaurant|}}
-          <option value='{{restaurant.name}}'>{{restaurant.name}}</option>
+          <option value='{{restaurant.local}}'>{{restaurant.local}}</option>
         {{/each}}
       </select>
     </div>
@@ -29,8 +29,8 @@
       <label for='reviewFilter'>Review</label>
       <select id='reviewFilter' class='form-control'>
         <option>Choose review</option>
-        {{#each review}}
-          <option value='{{this.name}}'>{{this.name}}</option>
+        {{#each reviews as |review|}}
+          <option value='{{review.name}}'>{{review.name}}</option>
         {{/each}}
       </select>
     </div>
