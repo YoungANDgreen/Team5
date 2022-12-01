@@ -7,7 +7,7 @@ const newResFormHandler = async (event) => {
   if (resName && resAddress) {
     const response = await fetch('/api/restaurant/test', {
       method: 'POST',
-      body: JSON.stringify({ resName, resAddress }),
+      body: JSON.stringify({ local: resName, address: resAddress }),
       headers: { 'Content-Type': 'application/json' },
     });
 
