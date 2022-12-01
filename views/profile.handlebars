@@ -10,7 +10,7 @@
     <div class='dish col-md-5'>
       <p>
         {{review.id}}
-        {{review.name}}
+        {{review.title}}
       </p>
     </div>
   {{/each}}
@@ -30,7 +30,7 @@
       <select id='reviewFilter' class='form-control'>
         <option>Choose review</option>
         {{#each reviews as |review|}}
-          <option value='{{review.name}}'>{{review.name}}</option>
+          <option value='{{review.title}}'>{{review.title}}</option>
         {{/each}}
       </select>
     </div>

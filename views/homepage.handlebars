@@ -1,11 +1,11 @@
 <div>
   <p>Homepage</p>
   <p>Recent Reviews</p>
-  {{#each restaurants as |restaurant|}}
-    <p>{{restaurant.local}}</p>
-    {{!-- <p>{{review.description}}</p>
+  {{#each reviews as |review|}}
+    <p>{{review.title}}</p>
+    <p>{{review.description}}</p>
     <p>Service: {{review.service}}</p>
     <p>Taste: {{review.taste}}</p>
-    <p>Quality: {{review.quality}}</p> --}}
+    <p>Quality: {{review.quality}}</p>
   {{/each}}
 </div>
