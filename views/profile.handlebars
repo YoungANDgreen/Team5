@@ -1,19 +1,7 @@
 <div class=''>
   <div class=''>
     <h2>Welcome, {{name}}!</h2>
-    {{#each restaurants as |restaurant|}}
-      <p>{{restaurant.local}}</p>
-      <p>Address: {{restaurant.address}}</p>
-    {{/each}}
   </div>
-  {{#each reviews as |review|}}
-    <div class='dish col-md-5'>
-      <p>
-        {{review.id}}
-        {{review.title}}
-      </p>
-    </div>
-  {{/each}}
   <div class='dropdownMenus col-md-12'>
     <div class='form-field'>
       <label for='restaurantFilter'>Restaurant</label>
