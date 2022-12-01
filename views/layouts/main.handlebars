@@ -22,9 +22,8 @@
           {{#if logged_in}}
             <a href='/profile'>profile</a>
             |
-            <a href='/restaurant/{{user.id}}'>See/Add A New Restaurant</a>
-            <a href='/reviews'>Add A Review</a>
-
+            <a href='/restaurant/'>Restaurant</a>
+                        <a href='/reviews'>Add A Review</a>
             <button class='' id='logout'>logout</button>
           {{else}}
             <a href='/login'>login</a>
@@ -42,7 +41,8 @@
 
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
-      <script src='/js/logout.js'></script>
+       <script src='/js/logout.js'></script>
+      <script src="/js/newRestaurant.js"></script>
     {{/if}}
   </body>
 
